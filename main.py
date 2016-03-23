@@ -20,4 +20,12 @@ with open(review_addr) as input_file:
             output_content = json.dumps(line_content)
             output_file.write(output_content + '\n')
 input_file.close()
+
+output_file = open('restaurant_review_only.json','w')
+with open('restaurant_review.json') as input_file:
+    for line in input_file:
+        line_content = json.loads(line)
+        output_content = json.dumps(line_content['text'])
+        output_file.write(output_content + '\n')
+input_file.close()
 output_file.close()
